@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Ryukyu Bird Biodiversity</title>
+
+	<!-- D3.js -->	
+    <script src="https://d3js.org/d3.v3.js"></script>
+	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<script src="regression.min.js"></script>
+	
+	<script src="scatterplot.js"></script>
+	<script src="scatterplotsea.js"></script>
+	
+	<script src="newdatanozerofunc.js"></script>
+	
+	<!-- Open Sans & CSS -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	  <style>
+		body {
+		  font-family: 'Roboto', sans-serif;
+		  font-size: 14px;
+		  font-weight: 400;
+		  color: #525252;
+		  text-align: center;
+		}
+		
+		html, body { 
+			width:auto; 
+			height:auto; 
+		}
+		.margin30{
+			margin-bottom:30px;
+		}
+		
+		
+		
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+		
+		.axisRed line,
+		.axisRed path{
+		  stroke: #D65734;
+		  fill: none;
+		  shape-rendering: crispEdges;
+		}
+
+		
+		.axisRed text{
+		  fill: #D65734;
+		}  
+
+		.dot {
+		  /* stroke: #000; */
+		}
+		
+		.blue{
+			color:#72A8FF;
+		}
+		
+		.green{
+			color:#96BF52;
+		}
+	  </style>
+  </head>
+  <body>
+
+	
+	<div id="cont" class="container-fluid text-center">
+		
+		
+		<div id="legend"></div>
+		<div class="row">	
+			<div class = "col-md-3">
+			</div>
+			<div class = "col-md-6">
+				<div id="area-tax-land"></div>
+			</div>
+			<div class = "col-md-3">
+			</div>
+			
+		</div>
+
+		<div class="row">
+			<div class = "col-md-3">
+			</div>
+			<div class = "col-md-6">
+				<div id="area-phy-land"></div>
+			</div>
+			<div class = "col-md-3">
+			</div>
+			
+		</div>
+		
+		<div class="row">	
+			<div class = "col-md-3">
+			</div>
+			<div class = "col-md-6">
+				<div id="area-func-land"></div>
+			</div>
+			<div class = "col-md-3">
+			</div>
+			
+		</div>
+
+	
+	</div>
+
+	<script>
+
+
+
+
+ var chart = d3.custom.scatterplot()._index(0);
+ //land birds island area vs alpha
+chart.xValue('IslandArea')
+	  .yValue('Taxonomic')
+	  .xLabel('Area (log)')
+	  .yLabel('Taxonomic Diversity')
+	  .xlog('log')
+	  .ylog('log')
+	  .landsea('Land');
+ d3.select('#area-tax-land')
+	.datum(datanozerofunc)
+	.call(chart); 
+	
+var chart2 = d3.custom.scatterplot()._index(1);
+ //land birds island area vs alpha
+chart2.xValue('IslandArea')
+	  .yValue('Phylogenetic')
+	  .xLabel('Area (log)')
+	  .yLabel('Phylogenetic Diversity')
+	  .xlog('log')
+	  .ylog('log')
+	  .landsea('Land');
+ d3.select('#area-phy-land')
+	.datum(datanozerofunc)
+	.call(chart2); 
+	
+var chart3 = d3.custom.scatterplot()._index(2);
+ //land birds island area vs alpha
+chart3.xValue('IslandArea')
+	  .yValue('Functional')
+	  .xLabel('Area (log)')
+	  .yLabel('Functional Diversity')
+	  .xlog('log')
+	  .ylog('log')
+	  .landsea('Land');
+ d3.select('#area-func-land')
+	.datum(datanozerofunc)
+	.call(chart3); 
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+</script>
+	
+  </body>
+</html>
